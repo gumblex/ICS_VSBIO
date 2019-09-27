@@ -28,18 +28,6 @@ def which(program):
 
     return None
 
-class CustomBuild(build):
-    def run(self):
-        self.run_command('build_ext')
-        build.run(self)
-
-
-class CustomInstall(install):
-    def run(self):
-        self.run_command('build_ext')
-        self.do_egg_install()
-
-
 if platform.system() == 'Windows':
     DEFINE_MACROS = [('_WIN32', None), ('VSBIODLL_EXPORTS', None)]
 elif platform.system() == 'Linux':
@@ -97,6 +85,5 @@ setup(name='ICS_VSBIO',
       platforms=['x86_64'],
       packages=['ICS_VSBIO'],
       package_dir={'ICS_VSBIO': 'ICS_VSBIO'},
-      cmdclass={'build': CustomBuild, 'install': CustomInstall},
       ext_modules=[VSBIO_INTERFACE, VSBIO_FLAGS],
       py_modules=['VSBIO_INTERFACE', 'VSBIO_FLAGS'])
