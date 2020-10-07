@@ -1,9 +1,7 @@
 '''
 Setup file for ICS_VSBIO
 '''
-from distutils.command.build import build
-from setuptools.command.install import install
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 import platform
 
 VERSION = '0.4.9'
