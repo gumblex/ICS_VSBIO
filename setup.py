@@ -55,22 +55,24 @@ if SWIG_OPTS is not None:
     for define, value in DEFINE_MACROS:
         SWIG_OPTS.append("-D" + define)
 
-VSBIO_INTERFACE = Extension('_VSBIOInterface',
+VSBIO_INTERFACE = Extension('ICS_VSBIO._VSBIOInterface',
                             sources=INTERFACE_SOURCES,
                             swig_opts=SWIG_OPTS,
                             include_dirs=['ICS_VSBIO/VSBIO/include',
                                           'ICS_VSBIO/StandardLibrary/include',
                                           'ICS_VSBIO/Hardware/include',
                                           'ICS_VSBIO/Core/include'],
+                            extra_compile_args=["-O3"],
                             define_macros=DEFINE_MACROS)
 
-VSBIO_FLAGS = Extension('_VSBIOFlags',
+VSBIO_FLAGS = Extension('ICS_VSBIO._VSBIOFlags',
                         sources=FLAGS_SOURCES,
                         swig_opts=SWIG_OPTS,
                         include_dirs=['ICS_VSBIO/VSBIO/include',
                                       'ICS_VSBIO/StandardLibrary/include',
                                       'ICS_VSBIO/Hardware/include',
                                       'ICS_VSBIO/Core/include'],
+                        extra_compile_args=["-O3"],
                         define_macros=DEFINE_MACROS)
 
 setup(name='ICS_VSBIO',
